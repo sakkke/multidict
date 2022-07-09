@@ -5,6 +5,8 @@
         try {
             const { user, session, error } = await supabase.auth.signIn({
                 provider: 'google',
+            }, {
+                redirectTo: window.location.origin,
             })
 
             if (error) {
