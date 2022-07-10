@@ -1,4 +1,5 @@
 <script>
+    import MonacoEditor from '$lib/MonacoEditor.svelte'
     import { supabase } from '$lib/supabaseClient'
 
     let disabled = false
@@ -17,6 +18,12 @@
         },
         name: name || '<WORD_BEFORE>',
     }, null, 2)
+
+    const handleContent = event => {
+        const content = event.detail
+
+        value = content
+    }
 
     const handleUpdate = async () => {
         try {
@@ -53,7 +60,7 @@
 <div>
     <div>Edit Word</div>
     <div>Data</div>
-    <textarea bind:value></textarea>
+    <MonacoEditor on:content={handleContent} {value} />
     <div>
         <button {disabled} on:click={handleUpdate}>Update</button>
     </div>
