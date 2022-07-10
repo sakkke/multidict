@@ -39,7 +39,7 @@
 
             alert('OK!')
 
-            window.location.reload()
+            window.location.href = `/words/${values.name}`
         } catch (error) {
             alert(error.message)
 
