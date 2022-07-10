@@ -1,5 +1,6 @@
 <script>
     import MonacoEditor from '$lib/MonacoEditor.svelte'
+    import TextArea from '$lib/TextArea.svelte'
     import { supabase } from '$lib/supabaseClient'
 
     let disabled = false
@@ -60,6 +61,7 @@
 <div>
     <div>Edit Word</div>
     <div>Data</div>
+    <TextArea on:content={handleContent} {value} />
     <MonacoEditor on:content={handleContent} {value} />
     <div>
         <button {disabled} on:click={handleUpdate}>Update</button>
